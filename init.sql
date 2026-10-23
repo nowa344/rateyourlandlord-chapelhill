@@ -1,5 +1,5 @@
 -- Database setup script for Rate My Landlord
--- This script sets up the tables, sequences, RLS policies, storage bucket, and seed data.
+-- This script sets up the tables, sequences, RLS policies, and RLS policies.
 
 -- 1. Create admins table
 CREATE TABLE IF NOT EXISTS public.admins (
@@ -29,7 +29,6 @@ CREATE TABLE IF NOT EXISTS public.reviews (
   landlord_rating integer NOT NULL CHECK (landlord_rating >= 1 AND landlord_rating <= 5),
   building_rating integer NOT NULL CHECK (building_rating >= 1 AND building_rating <= 5),
   beds integer CHECK (beds >= 0),
-  votes
   comment text NOT NULL,
   tags text[] DEFAULT '{}'::text[], 
   rent_amount numeric,
