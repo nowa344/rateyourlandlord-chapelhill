@@ -1,5 +1,5 @@
 -- Database setup script for Rate My Landlord
--- This script sets up the tables, sequences, RLS policies, and RLS policies.
+-- This script sets up the tables, indexes, admin helper, and row level security policies.
 
 -- 1. Create admins table
 CREATE TABLE IF NOT EXISTS public.admins (
@@ -67,7 +67,7 @@ CREATE OR REPLACE TRIGGER trigger_reviews_updated_at
 
 -- 6. Helper function to check if the current user is an admin
 CREATE OR REPLACE FUNCTION public.is_admin()
-RETURNS boolean SECURITY DEFINER AS $$
+RETURNS boolean SECURITY DEFINER SET search_path = public AS $$
 BEGIN
   RETURN EXISTS (
     SELECT 1 FROM public.admins
@@ -122,5 +122,9 @@ CREATE POLICY "Everyone can view all reviews" ON public.reviews
 
 CREATE POLICY "Users can update own reviews" ON public.reviews
   FOR UPDATE TO public USING (auth.uid() = user_id);
+
+-- Lets admins verify, delete, and restore reviews from the admin page
+CREATE POLICY "Admins can update reviews" ON public.reviews
+  FOR UPDATE TO public USING (public.is_admin());
 
 -- 10. No seed data: the site launches empty so no fake landlords or reviews appear.
