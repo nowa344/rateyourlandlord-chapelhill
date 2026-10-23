@@ -33,7 +33,7 @@ const ResourcesPage: React.FC = () => {
     <div className="resources-page">
       <div className="hero">
         <h1>Renter Resources</h1>
-        <p className="hero__subtitle">Helpful information, legal aid, and support for tenants in [insert location here].</p>
+        <p className="hero__subtitle">Helpful information, legal aid, and support for tenants in Chapel Hill and Carrboro.</p>
       </div>
       <div className="resources-content">
         <div className="resources-categories">

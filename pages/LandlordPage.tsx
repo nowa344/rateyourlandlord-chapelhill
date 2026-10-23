@@ -160,7 +160,7 @@ const LandlordPage: React.FC = () => {
                           id="newAddress"
                           value={newAddress}
                           onChange={e => setNewAddress(e.target.value)}
-                          placeholder="e.g., 123 Main St, Pittsburgh, PA"
+                          placeholder="e.g., 123 Main St, Chapel Hill, NC"
                           className="form-input"
                           autoComplete="street-address"
                           required

@@ -29,7 +29,7 @@ const Header: React.FC = () => {
       <div className="site-header__inner">
         {/* Logo */}
         <Link to="/" className="site-logo" onClick={() => setMenuOpen(false)}>
-          <img src={miniLogo} alt="Rate Your Landlord [insert location]" className="site-logo__img" />
+          <img src={miniLogo} alt="Rate Your Landlord Chapel Hill" className="site-logo__img" />
         </Link>
 
         {/* Desktop nav links */}
