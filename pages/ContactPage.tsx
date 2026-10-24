@@ -10,7 +10,12 @@ const ContactPage: React.FC = () => {
       <h2>Email</h2>
       <p>
         You can email us at{' '}
-        <a href="mailto:[insert email]">[insert email]</a>.
+        <a href="mailto:noahbush344@gmail.com">noahbush344@gmail.com</a>.
+      </p>
+      <h2>The Rate Your Landlord network</h2>
+      <p>
+        Rate Your Landlord Chapel&nbsp;Hill is part of a network of campus sites started by More Perfect University, the campus organizing program of{' '}
+        <a href="https://www.instagram.com/perfectunion/" target="_blank" rel="noopener noreferrer">More Perfect Union</a>.
       </p>
     </div>
   );
