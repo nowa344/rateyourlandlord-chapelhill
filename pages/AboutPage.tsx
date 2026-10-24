@@ -5,7 +5,7 @@ const AboutPage: React.FC = () => {
     <div className="about-page">
       <div className="hero">
         <h1>About RATE YOUR LANDLORD</h1>
-        <p className="hero__subtitle">A community-driven platform for Chapel Hill and Carrboro tenants</p>
+        <p className="hero__subtitle">A community-driven platform for Chapel&nbsp;Hill and Carrboro tenants</p>
       </div>
 
       <div className="about-sections">
