@@ -12,8 +12,10 @@ const AboutPage: React.FC = () => {
         <section>
           <h2>Our Mission</h2>
           <p>
-            [insert your own mission here]
-
+            In Chapel&nbsp;Hill and Carrboro, renters hunt for housing on tight timelines, and some landlords bank on that pressure. Repairs go ignored, fees appear without explanation, and deposits vanish at move-out. It's only getting harder: UNC plans to add about 5,000 undergraduates over the next decade, and every new student competes for the same off-campus housing.
+          </p>
+          <p>
+            Rate Your Landlord puts those practices on the public record. Every review gives the next tenant a warning before they sign, and gives landlords a reason to change.
           </p>
         </section>
 
