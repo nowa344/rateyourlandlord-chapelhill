@@ -10,7 +10,7 @@ const ContactPage: React.FC = () => {
       <h2>Email</h2>
       <p>
         You can email us at{' '}
-        <a href="mailto:noahbush344@gmail.com">noahbush344@gmail.com</a>.
+        <a href="mailto:rateyourlandlordchapelhill@gmail.com">rateyourlandlordchapelhill@gmail.com</a>.
       </p>
       <h2>The Rate Your Landlord network</h2>
       <p>
