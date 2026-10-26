@@ -2947,7 +2947,7 @@ ol {
   height: calc(min(100cqw - 2rem, 1200px) * 0.0735);
   z-index: -1;
   background: #0A0F2C;
-  animation: home-hero-band .6s .25s ease-out both;
+  animation: home-hero-band .5s cubic-bezier(.65,0,.35,1) both;
 }
 @keyframes home-hero-drift {
   0%   { transform: translate(0, 0) rotate(0deg); }
@@ -2962,8 +2962,8 @@ ol {
   80%  { transform: translate(43px, 39px); }
 }
 @keyframes home-hero-band {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0); }
 }
 .home-hero__art {
   position: relative;
