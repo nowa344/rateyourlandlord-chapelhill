@@ -23,7 +23,6 @@ import ResetPasswordPage from './pages/ResetPasswordPage';
 import VerifyEmailPage from './pages/VerifyEmailPage';
 import AboutPage from './pages/AboutPage';
 import LoadingSpinner from './components/LoadingSpinner';
-import IntroAnimation from './components/IntroAnimation';
 import { isMockMode, supabase } from './services/supabase';
 import { SupabaseApiService } from './services/SupabaseApiService';
 import { SupabaseAuthService } from './services/SupabaseAuthService';
@@ -45,7 +44,6 @@ function RequireAuth({ children }: { children: React.ReactNode }) {
 function AppContent() {
   return (
     <div className="app-shell">
-      <IntroAnimation />
       <Header />
       {isMockMode && (
         <div className="demo-banner">

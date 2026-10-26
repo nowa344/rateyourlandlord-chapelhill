@@ -2907,15 +2907,84 @@ ol {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-/* --- Home page intro animation (components/IntroAnimation.tsx) --- */
-.ryl-intro{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;padding:16px;cursor:pointer;
-  background-color:#0A0F2C;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.09'/%3E%3C/svg%3E"),
-    radial-gradient(70% 70% at 18% 12%, rgba(75,156,211,.22) 0%, rgba(75,156,211,0) 60%),
-    linear-gradient(135deg,#13294B 0%,#0A0F2C 100%);
-  transition:opacity .45s ease;}
-.ryl-intro--leaving{opacity:0;pointer-events:none}
-.ryl-intro__art{width:min(100%,1200px)}
-.ryl-intro__art svg{display:block;width:100%;height:auto;max-height:calc(100vh - 32px)}
-.ryl-intro__skip{position:absolute;right:20px;bottom:16px;color:rgba(255,255,255,.6);font:13px/1 Arial,Helvetica,sans-serif;letter-spacing:.02em;animation:ryl-intro-fade .4s 1s both}
-@keyframes ryl-intro-fade{from{opacity:0}to{opacity:1}}
+/* --- Home page animated hero (components/HomeHero.tsx) --- */
+.home-hero {
+  --hero-art-w: min(100vw - 2rem, 1200px);
+  position: relative;
+  overflow: hidden;
+  padding: clamp(1rem, 3vw, 2.5rem) 1rem 0;
+  background-color: #0A0F2C;
+  isolation: isolate;
+}
+/* slow-moving gradient */
+.home-hero::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  z-index: -2;
+  background:
+    radial-gradient(40% 45% at 30% 30%, rgba(75,156,211,.30) 0%, rgba(75,156,211,0) 70%),
+    radial-gradient(35% 40% at 75% 70%, rgba(43,111,166,.28) 0%, rgba(43,111,166,0) 70%),
+    linear-gradient(135deg, #13294B 0%, #0E1C3E 45%, #0A0F2C 100%);
+  animation: home-hero-drift 18s ease-in-out infinite alternate;
+}
+/* film grain that flickers on top of the gradient and the band */
+.home-hero::after {
+  content: "";
+  position: absolute;
+  inset: -200px;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E");
+  animation: home-hero-grain 0.9s steps(1) infinite;
+}
+/* navy strip that carries the artwork's bottom band edge to edge */
+.home-hero__band {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: calc(var(--hero-art-w) * 0.0735);
+  z-index: -1;
+  background: #0A0F2C;
+  animation: home-hero-band .6s .25s ease-out both;
+}
+@keyframes home-hero-drift {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  50%  { transform: translate(6%, -4%) rotate(8deg); }
+  100% { transform: translate(-5%, 5%) rotate(-6deg); }
+}
+@keyframes home-hero-grain {
+  0%   { transform: translate(0, 0); }
+  20%  { transform: translate(-37px, 23px); }
+  40%  { transform: translate(51px, -17px); }
+  60%  { transform: translate(-19px, -61px); }
+  80%  { transform: translate(43px, 39px); }
+}
+@keyframes home-hero-band {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.home-hero__art {
+  position: relative;
+  z-index: 1;
+  width: var(--hero-art-w);
+  margin: 0 auto;
+}
+/* the strip above paints the band, so the artwork's own copy is hidden */
+.home-hero__art #NAVY-BAND { display: none; }
+.home-hero__art svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-hero::before,
+  .home-hero::after,
+  .home-hero__band { animation: none; }
+  .home-hero__art svg * { animation: none !important; }
+}
+
+/* existing logo + search block, now secondary under the animated hero */
+.hero--compact { padding: 2.5rem 1rem 3rem; }
+.hero__logo--small { max-width: 20rem; margin-bottom: 1.75rem; }

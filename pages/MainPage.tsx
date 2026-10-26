@@ -7,6 +7,7 @@ import { useServices } from '../context/ServicesContext';
 import LandlordCard from '../components/LandlordCard';
 import type { Landlord, Review } from '../types';
 import homeLogo from '../home-logo.png';
+import HomeHero from '../components/HomeHero';
 
 const MainPage: React.FC = () => {
   const { landlords, loading, deleteLandlord } = useData();
@@ -78,13 +79,12 @@ const MainPage: React.FC = () => {
 
   return (
     <div>
+      <HomeHero />
+
       {/* Hero Section */}
-      <div className="hero">
+      <div className="hero hero--compact">
         <div className="hero__content">
-          <img src={homeLogo} alt="Find Your Landlord" className="hero__logo" />
-          <p className="hero__subtitle">
-            How would your landlord act if everyone was watching?
-          </p>
+          <img src={homeLogo} alt="Find Your Landlord" className="hero__logo hero__logo--small" />
 
           <div className="hero__search-wrap">
             <div className="hero__search-box">
