@@ -6,7 +6,7 @@ import { useAuth } from '../context/AuthContext';
 import { useServices } from '../context/ServicesContext';
 import LandlordCard from '../components/LandlordCard';
 import type { Landlord, Review } from '../types';
-import homeLogo from '../home-logo.png';
+import homeLogo from '../home-logo-light.png';
 import HomeHero from '../components/HomeHero';
 
 const MainPage: React.FC = () => {
