@@ -2909,7 +2909,7 @@ ol {
 }
 /* --- Home page animated hero (components/HomeHero.tsx) --- */
 .home-hero {
-  --hero-art-w: min(100vw - 2rem, 1200px);
+  container-type: inline-size;
   position: relative;
   overflow: hidden;
   padding: clamp(1rem, 3vw, 2.5rem) 1rem 0;
@@ -2944,7 +2944,7 @@ ol {
   left: 0;
   right: 0;
   bottom: 0;
-  height: calc(var(--hero-art-w) * 0.0735);
+  height: calc(min(100cqw - 2rem, 1200px) * 0.0735);
   z-index: -1;
   background: #0A0F2C;
   animation: home-hero-band .6s .25s ease-out both;
@@ -2968,7 +2968,7 @@ ol {
 .home-hero__art {
   position: relative;
   z-index: 1;
-  width: var(--hero-art-w);
+  max-width: 1200px;
   margin: 0 auto;
 }
 /* the strip above paints the band, so the artwork's own copy is hidden */
